@@ -61,20 +61,21 @@ nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:900;display:flex;gap:3px
   box-shadow:0 -4px 18px rgba(0,0,0,.10);border-top:1px solid #F0E9DC;}
 nav.tabs::-webkit-scrollbar{display:none;}
 nav.tabs label{flex:1 1 0;min-width:0;min-height:52px;border:none;background:transparent;cursor:pointer;
-  border-radius:14px;padding:5px 1px 4px;font-family:inherit;font-size:10px;font-weight:800;color:var(--gray);
-  white-space:nowrap;transition:transform .12s;}
+  border-radius:14px;padding:5px 1px 4px;font-family:inherit;font-size:9.5px;font-weight:800;color:var(--gray);
+  white-space:nowrap;letter-spacing:-.02em;transition:transform .12s;}
 nav.tabs label:active{transform:scale(.92);}
-nav.tabs label .ic{display:block;font-size:21px;line-height:1.25;transition:transform .2s;}
-#t-d1:checked~nav.tabs label[for="t-d1"] .ic,#t-d2:checked~nav.tabs label[for="t-d2"] .ic,
+nav.tabs label .ic{display:block;font-size:19px;line-height:1.25;transition:transform .2s;}
+#t-ov:checked~nav.tabs label[for="t-ov"] .ic,#t-d1:checked~nav.tabs label[for="t-d1"] .ic,#t-d2:checked~nav.tabs label[for="t-d2"] .ic,
 #t-d3:checked~nav.tabs label[for="t-d3"] .ic,#t-map:checked~nav.tabs label[for="t-map"] .ic,
 #t-etc:checked~nav.tabs label[for="t-etc"] .ic,#t-alg:checked~nav.tabs label[for="t-alg"] .ic{
   animation:tabpop .35s cubic-bezier(.34,1.56,.64,1);}
 @keyframes tabpop{0%{transform:scale(1);}50%{transform:scale(1.35) translateY(-3px);}100%{transform:scale(1.1);}}
 .tabr{display:none;}
-#t-d1:checked~nav.tabs label[for="t-d1"],#t-d2:checked~nav.tabs label[for="t-d2"],
+#t-ov:checked~nav.tabs label[for="t-ov"],#t-d1:checked~nav.tabs label[for="t-d1"],#t-d2:checked~nav.tabs label[for="t-d2"],
 #t-d3:checked~nav.tabs label[for="t-d3"],#t-map:checked~nav.tabs label[for="t-map"],
 #t-etc:checked~nav.tabs label[for="t-etc"],#t-alg:checked~nav.tabs label[for="t-alg"]{
   color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.18);}
+#t-ov:checked~nav.tabs label[for="t-ov"]{background:linear-gradient(135deg,#FFC93C,#2FB37A);}
 #t-d1:checked~nav.tabs label[for="t-d1"]{background:linear-gradient(135deg,#FF8A3D,#FFC93C);}
 #t-d2:checked~nav.tabs label[for="t-d2"]{background:linear-gradient(135deg,#2FB37A,#7BD389);}
 #t-d3:checked~nav.tabs label[for="t-d3"]{background:linear-gradient(135deg,#3FA9E0,#8B6FE8);}
@@ -85,7 +86,7 @@ nav.tabs button[data-t="alg"].on{background:linear-gradient(135deg,#E8536F,#FF8A
 
 main{padding:14px 12px calc(env(safe-area-inset-bottom) + 96px);max-width:620px;margin:0 auto;}
 .panel{display:none;}
-#t-d1:checked~main #d1,#t-d2:checked~main #d2,#t-d3:checked~main #d3,
+#t-ov:checked~main #ov,#t-d1:checked~main #d1,#t-d2:checked~main #d2,#t-d3:checked~main #d3,
 #t-map:checked~main #map-panel,#t-etc:checked~main #etc,#t-alg:checked~main #alg{display:block;}
 .panel>*{animation:rise .42s cubic-bezier(.22,1,.36,1) both;}
 .panel>*:nth-child(1){animation-delay:.00s;}
@@ -236,10 +237,26 @@ h2.sec em{font-style:normal;margin-right:6px;}
 footer{text-align:center;font-size:12px;color:var(--gray);font-weight:700;
   padding:22px 12px calc(env(safe-area-inset-bottom) + 118px);}
 footer .em{font-size:22px;display:block;margin-bottom:4px;}
+
+/* ぜんたい（全体工程） */
+.ovday{background:#fff;border-radius:18px;box-shadow:0 4px 14px rgba(0,0,0,.08);
+  border:2px solid #F1EADF;padding:12px 14px;margin-bottom:14px;}
+.ovday .oh2{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:800;margin-bottom:8px;flex-wrap:wrap;}
+.ovday .chip{color:#fff;border-radius:999px;padding:2px 13px;font-size:13.5px;}
+.ovday.o1 .chip{background:linear-gradient(135deg,#FF8A3D,#FFC93C);}
+.ovday.o2 .chip{background:linear-gradient(135deg,#2FB37A,#7BD389);}
+.ovday.o3 .chip{background:linear-gradient(135deg,#3FA9E0,#8B6FE8);}
+.ovday .sub{font-size:12px;color:var(--gray);font-weight:700;}
+.ovrow{display:flex;gap:9px;align-items:baseline;padding:4px 0;border-bottom:1px dashed #F0E7D8;font-size:14px;}
+.ovrow:last-child{border-bottom:none;}
+.ovrow .tm{flex:0 0 52px;font-size:12.5px;font-weight:800;color:#B4670F;font-variant-numeric:tabular-nums;}
+.ovrow .tx{flex:1 1 auto;font-weight:600;color:#3A3A3A;line-height:1.5;}
+.ovnote{font-size:12.5px;color:var(--gray);font-weight:700;text-align:center;margin-top:4px;}
 </style>
 </head>
 <body>
-<input type="radio" name="tab" id="t-d1" class="tabr" checked>
+<input type="radio" name="tab" id="t-ov" class="tabr" checked>
+<input type="radio" name="tab" id="t-d1" class="tabr">
 <input type="radio" name="tab" id="t-d2" class="tabr">
 <input type="radio" name="tab" id="t-d3" class="tabr">
 <input type="radio" name="tab" id="t-map" class="tabr">
@@ -255,6 +272,7 @@ footer .em{font-size:22px;display:block;margin-bottom:4px;}
 </header>
 
 <nav class="tabs" id="tabs">
+  <label for="t-ov"><span class="ic">📋</span>ぜんたい</label>
   <label for="t-d1"><span class="ic">🚗</span>9/5 土</label>
   <label for="t-d2"><span class="ic">🌳</span>9/6 日</label>
   <label for="t-d3"><span class="ic">🛍️</span>9/7 月</label>
@@ -264,6 +282,45 @@ footer .em{font-size:22px;display:block;margin-bottom:4px;}
 </nav>
 
 <main>
+
+<!-- ============ ぜんたい ============ -->
+<section class="panel" id="ov">
+  <h2 class="sec"><em>📋</em>ぜんたいスケジュール</h2>
+
+  <div class="ovday o1">
+    <div class="oh2"><span class="chip">1日目</span> 9月5日(土) <span class="sub">🚗 宝塚 → 軽井沢</span></div>
+    <div class="ovrow"><span class="tm">09:00</span><span class="tx">🚗 出発（宝塚IC → 岡谷IC）</span></div>
+    <div class="ovrow"><span class="tm">16:00</span><span class="tx">🏨 マリオット着・ひと休み</span></div>
+    <div class="ovrow"><span class="tm">18:00</span><span class="tx">🍽️ 夕食：酢重正之（旧軽井沢）</span></div>
+    <div class="ovrow"><span class="tm">19:30</span><span class="tx">⛪ 軽井沢高原教会（夜のあかり）</span></div>
+    <div class="ovrow"><span class="tm">20:30</span><span class="tx">🛏️ 軽井沢マリオットホテル 泊</span></div>
+  </div>
+
+  <div class="ovday o2">
+    <div class="oh2"><span class="chip">2日目</span> 9月6日(日) <span class="sub">🌳 軽井沢まんきつ</span></div>
+    <div class="ovrow"><span class="tm">08:00</span><span class="tx">🥐 朝食ビュッフェ（ホテル）</span></div>
+    <div class="ovrow"><span class="tm">09:45</span><span class="tx">💧 白糸の滝</span></div>
+    <div class="ovrow"><span class="tm">10:30</span><span class="tx">🚲 旧軽井沢銀座通り（サイクリング）</span></div>
+    <div class="ovrow"><span class="tm">12:00</span><span class="tx">🍽️ ランチ（候補は9/6タブに3つ）</span></div>
+    <div class="ovrow"><span class="tm">13:00</span><span class="tx">⛪ 聖パウロカトリック教会</span></div>
+    <div class="ovrow"><span class="tm">14:30</span><span class="tx">🦆 雲場池 おさんぽ</span></div>
+    <div class="ovrow"><span class="tm">16:00</span><span class="tx">🚗 エクシブ軽井沢へ移動</span></div>
+    <div class="ovrow"><span class="tm">17:00</span><span class="tx">🍝 夕食：ルッチコーレ（コース）</span></div>
+    <div class="ovrow"><span class="tm">21:00</span><span class="tx">🎾 ナイトテニス</span></div>
+    <div class="ovrow"><span class="tm">23:00</span><span class="tx">🛏️ エクシブ軽井沢 泊</span></div>
+  </div>
+
+  <div class="ovday o3">
+    <div class="oh2"><span class="chip">3日目</span> 9月7日(月) <span class="sub">🛍️ おみやげ → 帰路</span></div>
+    <div class="ovrow"><span class="tm">07:30</span><span class="tx">🍚 朝食：花木鳥（和食膳）</span></div>
+    <div class="ovrow"><span class="tm">09:30</span><span class="tx">🛍️ プリンスショッピングプラザ</span></div>
+    <div class="ovrow"><span class="tm">12:00</span><span class="tx">🍽️ ランチ（候補は9/7タブに3つ）</span></div>
+    <div class="ovrow"><span class="tm">13:00</span><span class="tx">🚗 帰路へ（岡谷IC → 宝塚IC）</span></div>
+    <div class="ovrow"><span class="tm">19:00</span><span class="tx">🏠 おうち着・おつかれさま！</span></div>
+  </div>
+
+  <p class="ovnote">くわしい内容・リンク・地図は、各日のタブでどうぞ 👇</p>
+</section>
 
 <!-- ============ 1日目 ============ -->
 <section class="panel" id="d1">
