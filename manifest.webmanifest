@@ -1,0 +1,12 @@
+{
+  "name": "軽井沢たびのしおり",
+  "short_name": "軽井沢しおり",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FFFBF2",
+  "theme_color": "#2FB37A",
+  "icons": [
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png"}
+  ]
+}
