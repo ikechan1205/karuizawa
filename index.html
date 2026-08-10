@@ -61,19 +61,21 @@ nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:900;display:flex;gap:3px
   box-shadow:0 -4px 18px rgba(0,0,0,.10);border-top:1px solid #F0E9DC;}
 nav.tabs::-webkit-scrollbar{display:none;}
 nav.tabs label{flex:1 1 0;min-width:0;min-height:52px;border:none;background:transparent;cursor:pointer;
-  border-radius:14px;padding:5px 1px 4px;font-family:inherit;font-size:9.5px;font-weight:800;color:var(--gray);
+  border-radius:14px;padding:5px 1px 4px;font-family:inherit;font-size:8.5px;font-weight:800;color:var(--gray);
   white-space:nowrap;letter-spacing:-.02em;transition:transform .12s;}
 nav.tabs label:active{transform:scale(.92);}
 nav.tabs label .ic{display:block;font-size:19px;line-height:1.25;transition:transform .2s;}
 #t-ov:checked~nav.tabs label[for="t-ov"] .ic,#t-d1:checked~nav.tabs label[for="t-d1"] .ic,#t-d2:checked~nav.tabs label[for="t-d2"] .ic,
 #t-d3:checked~nav.tabs label[for="t-d3"] .ic,#t-map:checked~nav.tabs label[for="t-map"] .ic,
-#t-etc:checked~nav.tabs label[for="t-etc"] .ic,#t-alg:checked~nav.tabs label[for="t-alg"] .ic{
+#t-etc:checked~nav.tabs label[for="t-etc"] .ic,#t-alg:checked~nav.tabs label[for="t-alg"] .ic,
+#t-wx:checked~nav.tabs label[for="t-wx"] .ic{
   animation:tabpop .35s cubic-bezier(.34,1.56,.64,1);}
 @keyframes tabpop{0%{transform:scale(1);}50%{transform:scale(1.35) translateY(-3px);}100%{transform:scale(1.1);}}
 .tabr{display:none;}
 #t-ov:checked~nav.tabs label[for="t-ov"],#t-d1:checked~nav.tabs label[for="t-d1"],#t-d2:checked~nav.tabs label[for="t-d2"],
 #t-d3:checked~nav.tabs label[for="t-d3"],#t-map:checked~nav.tabs label[for="t-map"],
-#t-etc:checked~nav.tabs label[for="t-etc"],#t-alg:checked~nav.tabs label[for="t-alg"]{
+#t-etc:checked~nav.tabs label[for="t-etc"],#t-alg:checked~nav.tabs label[for="t-alg"],
+#t-wx:checked~nav.tabs label[for="t-wx"]{
   color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.18);}
 #t-ov:checked~nav.tabs label[for="t-ov"]{background:linear-gradient(135deg,#FFC93C,#2FB37A);}
 #t-d1:checked~nav.tabs label[for="t-d1"]{background:linear-gradient(135deg,#FF8A3D,#FFC93C);}
@@ -82,12 +84,13 @@ nav.tabs label .ic{display:block;font-size:19px;line-height:1.25;transition:tran
 #t-map:checked~nav.tabs label[for="t-map"]{background:linear-gradient(135deg,#FF6B9D,#FF8A3D);}
 #t-etc:checked~nav.tabs label[for="t-etc"]{background:linear-gradient(135deg,#8B6FE8,#3FA9E0);}
 #t-alg:checked~nav.tabs label[for="t-alg"]{background:linear-gradient(135deg,#E8536F,#FF8A3D);}
+#t-wx:checked~nav.tabs label[for="t-wx"]{background:linear-gradient(135deg,#FFC93C,#3FA9E0);}
 nav.tabs button[data-t="alg"].on{background:linear-gradient(135deg,#E8536F,#FF8A3D);}
 
 main{padding:14px 12px calc(env(safe-area-inset-bottom) + 96px);max-width:620px;margin:0 auto;}
 .panel{display:none;}
 #t-ov:checked~main #ov,#t-d1:checked~main #d1,#t-d2:checked~main #d2,#t-d3:checked~main #d3,
-#t-map:checked~main #map-panel,#t-etc:checked~main #etc,#t-alg:checked~main #alg{display:block;}
+#t-map:checked~main #map-panel,#t-etc:checked~main #etc,#t-alg:checked~main #alg,#t-wx:checked~main #wx{display:block;}
 .panel>*{animation:rise .42s cubic-bezier(.22,1,.36,1) both;}
 .panel>*:nth-child(1){animation-delay:.00s;}
 .panel>*:nth-child(2){animation-delay:.05s;}
@@ -260,6 +263,7 @@ footer .em{font-size:22px;display:block;margin-bottom:4px;}
 <input type="radio" name="tab" id="t-d2" class="tabr">
 <input type="radio" name="tab" id="t-d3" class="tabr">
 <input type="radio" name="tab" id="t-map" class="tabr">
+<input type="radio" name="tab" id="t-wx" class="tabr">
 <input type="radio" name="tab" id="t-etc" class="tabr">
 <input type="radio" name="tab" id="t-alg" class="tabr">
 
@@ -277,6 +281,7 @@ footer .em{font-size:22px;display:block;margin-bottom:4px;}
   <label for="t-d2"><span class="ic">🌳</span>9/6 日</label>
   <label for="t-d3"><span class="ic">🛍️</span>9/7 月</label>
   <label for="t-map"><span class="ic">🗺️</span>マップ</label>
+  <label for="t-wx"><span class="ic">☀️</span>てんき</label>
   <label for="t-etc"><span class="ic">💰</span>おかね</label>
   <label for="t-alg"><span class="ic">⚠️</span>アレルギー</label>
 </nav>
@@ -743,6 +748,59 @@ footer .em{font-size:22px;display:block;margin-bottom:4px;}
 </section>
 
 <!-- ============ おさいふ ============ -->
+<section class="panel" id="wx">
+  <div class="dayhead" style="background:linear-gradient(120deg,#3FA9E0,#7BD389);">
+    <span class="em">☀️</span>
+    <div class="d">てんきと服そう</div>
+    <div class="m">9月上旬の軽井沢 ってどんな気候？</div>
+  </div>
+
+  <h2 class="sec"><em>📱</em>さいしんの予報をみる</h2>
+  <div class="saytext" style="margin-top:0;">
+    ボタンを押すと、軽井沢町のピンポイント予報（tenki.jp）がひらきます。<br>
+    出発の1週間前くらいから、ときどきチェックしよう！
+  </div>
+  <div class="btns">
+    <a class="btn" href="https://tenki.jp/forecast/3/23/4820/20321/" target="_blank" rel="noopener">☀️ きょう・あすの天気</a>
+    <a class="btn map" href="https://tenki.jp/forecast/3/23/4820/20321/10days.html" target="_blank" rel="noopener">📅 2週間先までの天気</a>
+  </div>
+
+  <h2 class="sec"><em>🌡️</em>9月上旬の軽井沢はこんな気候</h2>
+  <table>
+    <thead><tr><th style="width:32%">とき</th><th style="width:68%">めやす</th></tr></thead>
+    <tbody>
+      <tr><td class="lbl">☀️ 日中</td><td class="lbl">だいたい 22〜24℃。半そででも大丈夫な陽気</td></tr>
+      <tr><td class="lbl">🌙 朝・夜</td><td class="lbl">13〜14℃くらい。10℃近くまで下がる日もあってひんやり</td></tr>
+      <tr><td class="lbl">🌧️ 雨</td><td class="lbl">2日に1回くらいは降る時期。にわか雨にも注意</td></tr>
+    </tbody>
+  </table>
+  <div class="saytext">
+    軽井沢は標高およそ<b>940m</b>の高原。街なかより<b>5〜6℃すずしい</b>ので、<br>
+    「宝塚の10月」をイメージすると ちょうどいいよ 🍂
+  </div>
+
+  <h2 class="sec"><em>👕</em>服そうと持ちもののめやす</h2>
+  <div class="memoBox">
+    💡 <b>これがあれば安心</b>
+    <ul>
+      <li>・日中は半そで＋朝晩ようの<b>羽織りもの</b>（カーディガン・パーカーなど）が必須</li>
+      <li>・雨にそなえて<b>折りたたみ傘</b>か薄手のレインウェア</li>
+      <li>・おさんぽが多いので、歩きやすい<b>スニーカー</b>で</li>
+      <li>・標高が高くて日ざしが強め。<b>帽子・日やけ止め</b>もあると安心</li>
+    </ul>
+  </div>
+  <div class="memoBox">
+    ⚠️ <b>山の天気は変わりやすい</b>
+    <ul>
+      <li>・晴れていても、急に霧が出たり雨が降ったりすることがあるよ</li>
+      <li>・出発の前の日に、もういちど上のボタンで予報をチェック！</li>
+    </ul>
+  </div>
+  <div class="saytext" style="font-size:11.5px;color:#999;border-style:solid;border-color:#EFE8DA;">
+    気温のめやすは気象庁の平年値（軽井沢観測所・9月上旬）をもとに作成（2026年8月時点）
+  </div>
+</section>
+
 <section class="panel" id="etc">
   <h2 class="sec"><em>💰</em>旅のおさいふ</h2>
   <div class="bigmoney">
